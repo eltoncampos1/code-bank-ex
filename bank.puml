@@ -1,0 +1,29 @@
+@startuml codebank 
+
+entity "CreditCard" {
+  id: uuid
+  name: string
+  number: string
+  expiration_month: int
+  expiration_year: int
+  cvv: int
+  balance: int
+  limit: int
+  created_at: timestamp
+  updated_at: timestamp
+}
+
+entity "Transaction" {
+  id: uuid
+  amount: int
+  status: string
+  description: string
+  store: string
+  created_at: timestamp
+  updated_at: timestamp
+  credit_card_id: fk
+}
+
+Transaction "1" --* CreditCard : belongs
+
+@enduml
